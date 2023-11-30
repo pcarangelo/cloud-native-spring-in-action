@@ -1,5 +1,7 @@
 `.\gradlew test`
 
+`.\gradlew test --tests BookValidationTests`
+
 `.\gradlew bootRun`
 
 `.\gradlew bootJar`
@@ -20,4 +22,4 @@
 
 `kubectl expose deployment catalog-service --name=catalog-service --port=8080`
 
-` kubectl port-forward service/catalog-service 8000:8080`
+`kubectl port-forward service/catalog-service 8000:8080`
