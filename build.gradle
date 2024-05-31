@@ -36,3 +36,7 @@ configurations {
 		extendsFrom annotationProcessor
 	}
 }
+
+bootRun {
+	systemProperty 'spring.profiles.active', 'testdata'
+}
