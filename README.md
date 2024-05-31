@@ -23,3 +23,11 @@
 `kubectl expose deployment catalog-service --name=catalog-service --port=8080`
 
 `kubectl port-forward service/catalog-service 8000:8080`
+
+`java -jar build/libs/catalog-service-0.0.1-SNAPSHOT.jar --polar.greeting="Welcome to the catalog from CLI"` override property with cli
+
+`java '-Dpolar.greeting="Welcome to the catalog from JVM"' -jar build/libs/catalog-service-0.0.1-SNAPSHOT.jar` override property with JVM system property
+
+`$env:POLAR_GREETING="Welcome to the catalog from ENV"; java -jar catalog-service-0.0.1-SNAPSHOT.jar` run in powershell, override property with environmento
+
+4.3 Centralized configuration management with Spring Cloud Config Server
