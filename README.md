@@ -30,4 +30,4 @@
 
 `$env:POLAR_GREETING="Welcome to the catalog from ENV"; java -jar catalog-service-0.0.1-SNAPSHOT.jar` run in powershell, override property with environmento
 
-4.3 Centralized configuration management with Spring Cloud Config Server
+5 Persisting and managing data in the cloud
