@@ -30,4 +30,4 @@
 
 `$env:POLAR_GREETING="Welcome to the catalog from ENV"; java -jar catalog-service-0.0.1-SNAPSHOT.jar` run in powershell, override property with environmento
 
-5.2.4 Data repositories with Spring Data
+5.3.3 Integration tests with @SpringBootTest and Testcontainers
