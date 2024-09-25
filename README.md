@@ -32,4 +32,14 @@
 
 `podman run -d --name polar-postgres -e POSTGRES_USER=user -e POSTGRES_PASSWORD=password -e POSTGRES_DB=polardb_catalog -p 5432:5432 postgres:14.4`
 
-Chapter 5 complete
+` podman build -t my-java-mage:1.0.0 .
+  podman images
+  podman run --rm my-java-mage:1.0.0
+  create github token with all repo scopes and all write:packages scopes
+  podman login ghcr.io
+  podman tag my-java-mage:1.0.0 ghcr.io/pcarangelo/my-java-image:1.0.0
+  podman push ghcr.io/pcarangelo/my-java-image:1.0.0
+`
+
+6.1.3 Publishing images on GitHub Container Registry
+complete
