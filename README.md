@@ -1,45 +1,38 @@
-`.\gradlew test`
+# Catalog Service
 
-`.\gradlew test --tests BookValidationTests`
+This application is part of the Polar Bookshop system and provides the functionality for managing
+the books in the bookshop catalog. It's part of the project built in the
+[Cloud Native Spring in Action](https://www.manning.com/books/cloud-native-spring-in-action) book
+by [Thomas Vitale](https://www.thomasvitale.com).
 
-`.\gradlew bootRun`
+## REST API
 
-`.\gradlew bootJar`
+| Endpoint	      | Method   | Req. body  | Status | Resp. body     | Description    		   	     |
+|:---------------:|:--------:|:----------:|:------:|:--------------:|:-------------------------------|
+| `/books`        | `GET`    |            | 200    | Book[]         | Get all the books in the catalog. |
+| `/books`        | `POST`   | Book       | 201    | Book           | Add a new book to the catalog. |
+|                 |          |            | 422    |                | A book with the same ISBN already exists. |
+| `/books/{isbn}` | `GET`    |            | 200    | Book           | Get the book with the given ISBN. |
+|                 |          |            | 404    |                | No book with the given ISBN exists. |
+| `/books/{isbn}` | `PUT`    | Book       | 200    | Book           | Update the book with the given ISBN. |
+|                 |          |            | 200    | Book           | Create a book with the given ISBN. |
+| `/books/{isbn}` | `DELETE` |            | 204    |                | Delete the book with the given ISBN. |
 
-`java -jar build/libs/catalog-service-0.0.1-SNAPSHOT.jar`
+## Useful Commands
 
-`.\gradlew bootBuildImage`
+| Gradle Command	         | Description                                   |
+|:---------------------------|:----------------------------------------------|
+| `./gradlew bootRun`        | Run the application.                          |
+| `./gradlew build`          | Build the application.                        |
+| `./gradlew test`           | Run tests.                                    |
+| `./gradlew bootJar`        | Package the application as a JAR.             |
+| `./gradlew bootBuildImage` | Package the application as a container image. |
 
-`podman run --rm --name catalog-service -p 8080:8080 catalog-service:0.0.1-SNAPSHOT`
+After building the application, you can also run it from the Java CLI:
 
-`podman login docker.com`
+```bash
+java -jar build/libs/catalog-service-0.0.1-SNAPSHOT.jar
+```
 
-`podman tag docker.io/library/catalog-service:0.0.1-SNAPSHOT psoftg/catalog-service:0.0.1`
 
-`podman push psoftg/catalog-service:0.0.1`
-
-`kubectl create deployment catalog-service --image=psoftg/catalog-service:0.0.1`
-
-`kubectl expose deployment catalog-service --name=catalog-service --port=8080`
-
-`kubectl port-forward service/catalog-service 8000:8080`
-
-`java -jar build/libs/catalog-service-0.0.1-SNAPSHOT.jar --polar.greeting="Welcome to the catalog from CLI"` override property with cli
-
-`java '-Dpolar.greeting="Welcome to the catalog from JVM"' -jar build/libs/catalog-service-0.0.1-SNAPSHOT.jar` override property with JVM system property
-
-`$env:POLAR_GREETING="Welcome to the catalog from ENV"; java -jar catalog-service-0.0.1-SNAPSHOT.jar` run in powershell, override property with environmento
-
-`podman run -d --name polar-postgres -e POSTGRES_USER=user -e POSTGRES_PASSWORD=password -e POSTGRES_DB=polardb_catalog -p 5432:5432 postgres:14.4`
-
-` podman build -t my-java-mage:1.0.0 .
-  podman images
-  podman run --rm my-java-mage:1.0.0
-  create github token with all repo scopes and all write:packages scopes
-  podman login ghcr.io
-  podman tag my-java-mage:1.0.0 ghcr.io/pcarangelo/my-java-image:1.0.0
-  podman push ghcr.io/pcarangelo/my-java-image:1.0.0
-`
-
-6.1.3 Publishing images on GitHub Container Registry
-complete
+6.2.4 Containerizing Spring Boot with Cloud Native Buildpacks
